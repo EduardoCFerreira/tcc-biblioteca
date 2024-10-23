@@ -1,0 +1,27 @@
+{% extends "global/base.html" %}
+
+{% block title %} Editar - Autor |{% endblock title %}
+
+{% block conteudo %}
+
+<div class="container mb-5">
+    <div class="main-content main-content-list container">
+        <div class="main-content center container">
+            <div class="usuarios-emprestimo-container">
+                <ul>
+                    {% for autor in autores %}
+                    <li>
+                        <a class='livro-editar-link' href="{% url "usuarios:autor_editar" autor.id %}">{{autor.name}}</a>
+                        <i class="fa-solid fa-pen"></i>
+                    </li>
+                    {%empty%}
+                    <li>
+                        <h1>Você ainda não tem nenhum autor</h1> 
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock conteudo %}

@@ -1,0 +1,43 @@
+{% extends "global/base.html" %}
+
+{% block title %} Emprestimos |{% endblock title %}
+
+{% block conteudo %}
+
+<div class="container mb-5">
+    <h1 class="title-container">Emprestimos de {{user}}</h1>
+</div>
+<div class="main-content main-content-list container">
+    <div class="main-content center container">
+        {% if user.is_authenticated %}
+        {% endif %}
+        <div class="usuarios-emprestimo-container">
+                {% for livro in livros %}
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data retirada</th>
+                        <th scope="col">Data devolução</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{livro.book}}</td>
+                        <td>{{livro.data_retirada}}</td>
+                        <td>{{livro.data_devolucao}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {%empty%}
+                <ul>
+                <li>
+                    <h1>Você ainda não tem nenhum emprestimo</h1>
+                </li>
+                </ul>
+                {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock conteudo %}

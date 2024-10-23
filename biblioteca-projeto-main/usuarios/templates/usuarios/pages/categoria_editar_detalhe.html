@@ -1,0 +1,27 @@
+{% extends "global/base.html" %}
+
+{% block title %} Editar - Categoria |{% endblock title %}
+
+{% block conteudo %}
+
+<div class="container mb-5">
+    <div class="main-content main-content-list container">
+        <div class="main-content center container">
+            <div class="usuarios-emprestimo-container">
+                <ul>
+                    {% for categoria in categorias %}
+                    <li>
+                        <a class='livro-editar-link' href="{% url "usuarios:categoria_editar" categoria.id %}">{{categoria.name}}</a>
+                        <i class="fa-solid fa-pen"></i>
+                    </li>
+                    {%empty%}
+                    <li>
+                        <h1>Você ainda não tem nenhuma categoria</h1>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock conteudo %}
